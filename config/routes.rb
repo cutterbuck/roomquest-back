@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :vacancies
       post '/home', to: 'users#create'
       get '/users', to: 'users#index'
+      get '/current_user', to: 'users#show'
     end
   end
 end

@@ -15,8 +15,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    render json: @user
+
+    if my_user
+      render json: {
+        id: my_user.id,
+        name: my_user.name
+      }
+    else
+      render json: {error: 'No id present on headers'}, status: 404
+    end
   end
 
   # def update
