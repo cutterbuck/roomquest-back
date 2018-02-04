@@ -28,6 +28,7 @@ class ApplicationController < ActionController::API
       rescue JWT::DecodeError
         [{}]
       end
+
       if decoded_token["user_id"]
         @my_user ||= User.find(decoded_token["user_id"])
       end
