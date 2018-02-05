@@ -15,7 +15,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-
     if my_user
       render json: {
         id: my_user.id,
@@ -26,15 +25,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  # def update
-  #   @user = User.find(params[:id])
-  #   @user.update(user_params)
-  #   if @user.save
-  #     render json: @user
-  #   else
-  #     render json: {errors: @user.errors.full_messages}, status: 422
-  #   end
-  # end
+
 
   private
   def user_with_token(user)

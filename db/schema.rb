@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 20180201013219) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.float "current_lat"
-    t.float "current_long"
+    t.string "phone"
     t.string "access_token"
     t.string "profile_image_url"
     t.datetime "created_at", null: false
@@ -35,8 +34,8 @@ ActiveRecord::Schema.define(version: 20180201013219) do
   end
 
   create_table "vacancies", force: :cascade do |t|
-    t.string "title"
     t.string "address"
+    t.string "apt_num"
     t.string "city"
     t.string "state"
     t.integer "zipcode"
