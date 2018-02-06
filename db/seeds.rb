@@ -27,3 +27,5 @@ tashawn.friends << jake
 tashawn.friends << wassy
 
 wassy.friends << guy
+
+room3 = Vacancy.create(address: "45 Popham Road", apt_num: "4B", city: "Scarsdale", state: "NY", zipcode: 10583, description: "fixer upper", user_id: 10100111021354256)

@@ -7,24 +7,25 @@ class Api::V1::UsersController < ApplicationController
   def create
     data = params[:response]
     user = User.find_or_create_by(user_params(data))
-
-    encryptedAccess = issue_token({token: data[:accessToken]})
-
-    user.update(access_token: encryptedAccess)
-    render json: user_with_token(user)
-  end
-
-  def show
-    if my_user
-      render json: {
-        id: my_user.id,
-        name: my_user.name
-      }
+    if user
+      render json: user_with_token(user)
     else
-      render json: {error: 'No id present on headers'}, status: 404
+      render json: {error: 'User not found'}, status: 404
     end
   end
 
+
+  def show
+    # byebug
+    if current_user
+      render json: {
+        id: current_user.id,
+        name: current_user.name,
+      }
+    else
+      render json: {error: 'Hey Snake, you frigged it all up!'}, status: 404
+    end
+  end
 
 
   private
