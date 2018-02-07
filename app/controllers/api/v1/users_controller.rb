@@ -26,7 +26,9 @@ class Api::V1::UsersController < ApplicationController
         name: current_user.name,
         vacancy: current_user.vacancy,
         email: current_user.email,
-        friends: current_user.friends
+        friends: current_user.friends,
+        associations: current_user.associations,
+        vacant_rooms: current_user.vacant_rooms
       }
     else
       render json: {error: 'Hey Snake, you frigged it all up!'}, status: 404
