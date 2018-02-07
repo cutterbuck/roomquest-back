@@ -9,7 +9,7 @@ class CreateVacancies < ActiveRecord::Migration[5.1]
       t.string :description
       t.float :lat
       t.float :long
-      t.string :user_id
+      t.belongs_to :user
 
       t.timestamps
     end

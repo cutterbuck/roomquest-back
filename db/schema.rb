@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180201013219) do
 
   create_table "user_friends", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "friend_id"
+    t.bigint "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_friends_on_user_id"
@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(version: 20180201013219) do
     t.string "description"
     t.float "lat"
     t.float "long"
-    t.string "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vacancies_on_user_id"
   end
 
   add_foreign_key "user_friends", "users"

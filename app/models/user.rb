@@ -6,12 +6,14 @@ class User < ApplicationRecord
 
   def associations
     associations = []
-    self.friends.map do |friend|
+
+    self.friends.each do |friend|
+      associations << friend
       friend.friends.each do |fof|
         associations << fof
       end
     end
-    associations.delete_if{|el| el.name == self.name}.uniq
+    associations.delete_if{|el| el.name == self.name}.uniq!
     associations
   end
 
