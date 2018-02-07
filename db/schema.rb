@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180201013219) do
     t.string "description"
     t.float "lat"
     t.float "long"
-    t.integer "user_id"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -16,11 +16,12 @@ class Api::V1::UsersController < ApplicationController
 
 
   def show
-    # byebug
     if current_user
       render json: {
         id: current_user.id,
         name: current_user.name,
+        vacancy: current_user.vacancy,
+        email: current_user.email
       }
     else
       render json: {error: 'Hey Snake, you frigged it all up!'}, status: 404

@@ -6,7 +6,7 @@ class Api::V1::VacanciesController < ApplicationController
 
   def create
     data = params[:data]
-    vacancy = Vacancy.find_or_create_by(vacancy_params(data))
+    vacancy = Vacancy.create(vacancy_params(data))
     render json: vacancy
   end
   #
@@ -23,6 +23,7 @@ class Api::V1::VacanciesController < ApplicationController
 
   private
   def vacancy_params(data)
+    user = User.find_by(email: data[:email])
     params = {
       address: data[:address],
       apt_num: data[:aptNum],
@@ -30,7 +31,7 @@ class Api::V1::VacanciesController < ApplicationController
       state: data[:state],
       zipcode: data[:zipcode],
       description: data[:description],
-      user_id: data[:userId]
+      user_id: user.id
     }
   end
 end
