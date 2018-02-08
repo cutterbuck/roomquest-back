@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20180201013219) do
     t.string "state"
     t.integer "zipcode"
     t.string "description"
-    t.float "lat"
-    t.float "long"
+    t.decimal "lat"
+    t.decimal "lng"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -31,6 +31,8 @@ class Api::V1::VacanciesController < ApplicationController
       state: data[:state],
       zipcode: data[:zipcode],
       description: data[:description],
+      lat: data[:lat],
+      lng: data[:lng],
       user_id: user.id
     }
   end

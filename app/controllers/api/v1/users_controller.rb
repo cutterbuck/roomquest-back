@@ -9,7 +9,13 @@ class Api::V1::UsersController < ApplicationController
     friends_data = data[:friends][:data]
     arr = friends_data.map{|fr| {name: fr[:name], id: fr[:id]}}
     friends = arr.map{|fr| User.find_by(id: fr[:id])}.compact
-    user = User.find_or_create_by(user_params(data))
+    user = User.find_by(id: data[:id])
+    if user
+      user.update(user_params(data))
+    else
+      user = User.create(user_params(data))
+    end
+    # user = User.find_or_create_by(user_params(data))
     user.friends = friends
     if user
       render json: user_with_token(user)
@@ -28,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
         email: current_user.email,
         friends: current_user.friends,
         associations: current_user.associations,
-        vacant_rooms: current_user.vacant_rooms
+        vacant_rooms: current_user.vacant_rooms.compact
       }
     else
       render json: {error: 'Hey Snake, you frigged it all up!'}, status: 404
