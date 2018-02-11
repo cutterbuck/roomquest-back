@@ -34,6 +34,7 @@ class Api::V1::UsersController < ApplicationController
         email: current_user.email,
         friends: current_user.friends,
         associations: current_user.associations,
+        associations_with_rooms: current_user.associations_with_rooms,
         vacant_rooms: current_user.vacant_rooms.compact
       }
     else
@@ -56,7 +57,6 @@ class Api::V1::UsersController < ApplicationController
       name: data[:name],
       email: data[:email],
       profile_image_url: data[:picture][:data][:url]
-      # friends: data[:friends][:data]
     }
   end
 end
