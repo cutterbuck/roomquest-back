@@ -21,6 +21,10 @@ class User < ApplicationRecord
     self.associations.select{|ass| ass.vacancy}
   end
 
+  def associations_without_rooms
+    self.associations.select{|ass| !ass.vacancy}
+  end
+
   def vacant_rooms
     self.associations.map{|ass| ass.vacancy}
   end

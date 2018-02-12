@@ -35,6 +35,7 @@ class Api::V1::UsersController < ApplicationController
         friends: current_user.friends,
         associations: current_user.associations,
         associations_with_rooms: current_user.associations_with_rooms,
+        associations_without_rooms: current_user.associations_without_rooms,
         vacant_rooms: current_user.vacant_rooms.compact
       }
     else
