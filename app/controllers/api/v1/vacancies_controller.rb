@@ -9,17 +9,11 @@ class Api::V1::VacanciesController < ApplicationController
     vacancy = Vacancy.create(vacancy_params(data))
     render json: vacancy
   end
-  #
-  # def update
-  #   @vacancy = Vacancy.find(params[:id])
-  #   @vacancy.update(vacancy_params)
-  #   if @vacancy.save
-  #     render json: @vacancy
-  #   else
-  #     render json: {errors: @vacancy.errors.full_messages}, status: 422
-  #   end
-  # end
 
+  def destroy
+    vacancy = Vacancy.find(params[:id])
+    vacancy.destroy
+  end
 
   private
   def vacancy_params(data)

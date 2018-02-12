@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/current_user', to: 'users#show'
       post '/vacancies', to: 'vacancies#create'
       get '/vacancies', to: 'vacancies#index'
+      delete '/vacancies/:id', to: 'vacancies#destroy'
     end
   end
 end
